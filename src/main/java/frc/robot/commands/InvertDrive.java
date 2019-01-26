@@ -21,19 +21,19 @@ public class InvertDrive extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.chassis.setSpeed(-Robot.chassis.getSpeed());
+    
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
+    Robot.chassis.setDriveSpeed1(-Robot.chassis.getDriveSpeed1());
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true; //Runs once because true
   }
 
   // Called once after isFinished returns true

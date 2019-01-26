@@ -10,9 +10,10 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.DriveForward;
 import frc.robot.commands.DriveWithJoystick;
 import frc.robot.commands.InvertDrive;
+import frc.robot.commands.ResetGyro;
+import frc.robot.commands.DriveForward;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -63,7 +64,9 @@ public class OI {
     buttonX = new JoystickButton(driveJoystick, X_BUTTON_PORT);
     buttonY = new JoystickButton(driveJoystick, Y_BUTTON_PORT);
 
-    buttonA.whenReleased(new InvertDrive());
+    buttonA.whenPressed(new InvertDrive());
     buttonB.whenPressed(new DriveWithJoystick());
+    buttonX.whileHeld(new DriveForward());
+    buttonY.whenPressed(new ResetGyro());
   }
 }

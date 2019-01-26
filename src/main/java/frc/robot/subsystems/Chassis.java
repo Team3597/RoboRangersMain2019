@@ -25,36 +25,49 @@ public class Chassis extends Subsystem {
   public static Spark right;
 
   public static final double SPEED_DEFAULT = 0.8d;
-  private static double speed;
+  private static double driveSpeed1, driveSpeed2;
 
   public Chassis() {
     left = new Spark(RobotMap.LEFT_DRIVE_MOTOR);
     right = new Spark(RobotMap.RIGHT_DRIVE_MOTOR);
     chassis = new RobotDrive(left, right);
-    speed = SPEED_DEFAULT;
+    driveSpeed1 = SPEED_DEFAULT;
+    driveSpeed2 = SPEED_DEFAULT;
   }
 
   public void setTankDrive(double pLeftSpeed, double pRightSpeed) {
-    chassis.tankDrive(pLeftSpeed * speed, pRightSpeed * speed);
+    chassis.tankDrive(pLeftSpeed * driveSpeed1, pRightSpeed * driveSpeed2);
   }
 
-  public void setArcadeDrive(double pRotateSpeed, double pDriveSpeed) {
-    chassis.arcadeDrive(pRotateSpeed * speed, -pDriveSpeed * speed);
+  public void setArcadeDrive(double pDriveSpeed, double pRotateSpeed) {
+    chassis.arcadeDrive(pDriveSpeed * driveSpeed1, -pRotateSpeed * driveSpeed2);
   }
 
   public void stop() {
     chassis.tankDrive(0d, 0d);
   }
 
-  public static double getSpeed() {
-    return speed;
+  public static double getDriveSpeed1() {
+    return driveSpeed1;
   }
 
-  public static void setSpeed(double pSpeed) {
+  public static void setDriveSpeed1(double pSpeed) {
     if (pSpeed > 1.0d || pSpeed < -1.0d) {
-      speed = SPEED_DEFAULT;
+      driveSpeed1 = SPEED_DEFAULT;
     } else {
-      speed = pSpeed;
+      driveSpeed1 = pSpeed;
+    }
+  }
+
+  public static double getDriveSpeed2() {
+    return driveSpeed1;
+  }
+
+  public static void setDriveSpeed2(double pSpeed) {
+    if (pSpeed > 1.0d || pSpeed < -1.0d) {
+      driveSpeed1 = SPEED_DEFAULT;
+    } else {
+      driveSpeed1 = pSpeed;
     }
   }
 

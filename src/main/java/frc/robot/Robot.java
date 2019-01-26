@@ -7,19 +7,14 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Chassis;
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Sensors;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,11 +24,8 @@ import frc.robot.subsystems.ExampleSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static final Chassis chassis = new Chassis();
-  public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
-  private static final double GYRO_LEFT_BOUND = 90d,
-    GYRO_RIGHT_BOUND = 180d;
+  public static final Sensors sensors = new Sensors();
 
   public static OI oi;
 
@@ -47,10 +39,9 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
+    //m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
-    SmartDashboard.putData("Auto mode", m_chooser);
-    gyro.calibrate();
+    //SmartDashboard.putData("Auto mode", m_chooser);
   }
 
   /**
@@ -63,13 +54,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    /*double angle = Math.abs(gyro.getAngle() % 360d);
-    if(angle >= GYRO_LEFT_BOUND && angle <= GYRO_RIGHT_BOUND) {
-      System.out.println("Rumble rumble " + angle);
-      OI.driveJoystick.setRumble(GenericHID.RumbleType.kLeftRumble, 1d);
-      OI.driveJoystick.setRumble(GenericHID.RumbleType.kRightRumble, 1d);
-    }
-    */
+
   }
 
   /**
