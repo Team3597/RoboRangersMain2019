@@ -11,8 +11,13 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.DriveWithJoystick;
+import frc.robot.commands.Grip;
+import frc.robot.commands.Intake;
 import frc.robot.commands.InvertDrive;
+import frc.robot.commands.Release;
 import frc.robot.commands.ResetGyro;
+import frc.robot.commands.Shoot;
+import frc.robot.commands.TrackBall;
 import frc.robot.commands.DriveForward;
 
 /**
@@ -64,9 +69,13 @@ public class OI {
     buttonX = new JoystickButton(driveJoystick, X_BUTTON_PORT);
     buttonY = new JoystickButton(driveJoystick, Y_BUTTON_PORT);
 
-    buttonA.whenPressed(new InvertDrive());
-    buttonB.whenPressed(new DriveWithJoystick());
-    buttonX.whileHeld(new DriveForward());
-    buttonY.whenPressed(new ResetGyro());
+    /*
+    buttonA.whileHeld(new Intake());
+    buttonB.whileHeld(new Shoot());
+    buttonX.whenPressed(new InvertDrive());
+    buttonY.whileHeld(new TrackBall());
+    */
+    buttonA.whileHeld(new Grip());
+    buttonB.whileHeld(new Release());
   }
 }
