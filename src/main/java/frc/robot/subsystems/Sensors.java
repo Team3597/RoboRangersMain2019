@@ -75,6 +75,15 @@ public class Sensors extends Subsystem {
       return true;
     }
   }
+
+  public void limeLightSetPipeline(int pPipeline) {
+    System.out.println("Out");
+    if (pPipeline >= 0 && pPipeline <= 9) {
+      System.out.println("In");
+      limeLightTable.getEntry("pipeline").setValue(pPipeline);
+      System.out.println(limeLightTable.getEntry("pipeline").getDouble(0d));
+    }
+  }
   
 
   @Override
